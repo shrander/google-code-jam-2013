@@ -38,8 +38,11 @@
 import sys
 
 items = []
-credit_amount = 0.0
+credit_amount = 0
 file_name = ''
+cases = []
+num_cases = 0
+num_items = 0
 
 def usage():
     print "USAGE: store_credit.py [file_name]"
@@ -49,14 +52,38 @@ def usage():
 def parse_args(args):
     i=0
     while(i<len(args)):
-      if len(args) == 1:
-        file_name = args[i]
-      else:
-        usage()
+    	if len(args) == 1:
+        	file_name = args[i]
+    	else:
+			usage()
         
+def parse_file():
+	fhandle = open(file_name, 'r')
+	lines = fhandle.readlines()
+	num_cases = int(lines[0])
+	case=1
+	while (case < len(lines)):
+		credit_amount = int(lines[case])
+		case+=1
+		num_items = lines[case]
+		case+=1
+		i=0
+		items = lines[i].split()
+		while( i < len(items)): 
+			j=i+1
+			while (j < len(items):
+				if items[i]+items[j] == credit_amount:
+					print 'case #%d: %d %d' % case%3+1, i, j
+				j+=1
+			i+=1
+		case+=1
+		
 def main(args):
-  parse_args(args)
-  parse_file(file_name)
+	parse_args(args)
+	parse_file()
   
 if __name__ == '__main__':
-  main(sys.argv[1:])
+	try:
+		main(sys.argv[1:])
+	except KeyboardInterrupt:
+		sys.exit()
