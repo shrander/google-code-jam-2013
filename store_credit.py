@@ -73,7 +73,7 @@ def parse_file():
 			j=i+1
 			while (j < len(items):
 				if items[i]+items[j] == credit_amount:
-					print 'case #%d: %d %d' % case%3+1, i, j
+					print 'Case #%d: %d %d' % case%3+1, i, j
 				j+=1
 			i+=1
 		case+=1
