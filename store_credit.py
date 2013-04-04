@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # Problem
 #
-# You receive a credit C at a local store and would like to buy two items. You first walk through the store and 
+ """You receive a credit C at a local store and would like to buy two items. You first walk through the store and 
 # create a list L of all available items. From this list you would like to buy two items that add up to the entire
 # value of the credit. The solution you provide will consist of the two integers indicating the positions of the 
-# items in your list (smaller number first).
+# items in your list (smaller number first)."""
 #
 # Input
 #
@@ -35,3 +35,28 @@
 #
 # N = 50
 # 3 ≤ I ≤ 2000 
+import sys
+
+items = []
+credit_amount = 0.0
+file_name = ''
+
+def usage():
+    print "USAGE: store_credit.py [file_name]"
+    print " file_name  input file name"
+    sys.exit()
+    
+def parse_args(args):
+    i=0
+    while(i<len(args)):
+      if len(args) == 1:
+        file_name = args[i]
+      else:
+        usage()
+        
+def main(args):
+  parse_args(args)
+  parse_file(file_name)
+  
+if __name__ == '__main__':
+  main(sys.argv[1:])
